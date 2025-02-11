@@ -1,0 +1,79 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Calendar container */
+.calendar-container {
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+header h1 {
+    font-size: 24px;
+    margin: 5px 0;
+}
+header p {
+    color: #666;
+}
+
+/* Calendar */
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.calendar th, .calendar td {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
+}
+
+.calendar th {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+}
+
+/* Event Labels */
+.event {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    color: white;
+    width: 90%;
+    text-align: center;
+}
+
+/* Colors for different event types */
+.blue { background-color: #3498db; }  /* Customer Insights */
+.green { background-color: #2ecc71; } /* Product Feature */
+.red { background-color: #e74c3c; }   /* Customer Review */
+.yellow { background-color: #f1c40f; } /* Special Offer */
+.orange { background-color: #ff8c00; } /* Weekly Wrap-Up */
+
+/* Legend */
+.legend {
+    margin-top: 20px;
+}
+.badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    margin: 5px;
+    color: white;
+}
