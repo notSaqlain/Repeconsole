@@ -34,15 +34,13 @@ header p {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden; /* Evita che gli angoli vengano sovrascritti */
+    border-collapse: separate; /* Permette il border-radius */
+    border-spacing: 2px; /* Aggiunge spazio tra le celle per un effetto più morbido */
 }
 
-.calendar th, .calendar td {
-    border: 1px solid #ddd;
-    padding: 20px;
-    text-align: center;
-    vertical-align: top;
-    position: relative;
-}
+
 
 .calendar th {
     background-color: black;
@@ -89,11 +87,97 @@ header p {
     margin: 5px;
     color: white;
 }
+
+/* Stile per le celle della tabella */
 .calendar th, .calendar td {
-    width: calc(100% / 7); 
+    border-radius: 15px; /* Arrotonda ogni cella */
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
 }
 
-.calendar th, .calendar td {
-    width: 14.28%; 
+/* Stile per la prima riga (header) della tabella */
+.calendar thead th {
+    background-color: #002F5F;
+    color: white;
+    padding: 10px;
+    border-radius: 20px; /* Arrotonda gli header */
+    text-align: center;
+    font-weight: bold;
+    width: 14.28%;
 }
+
+.day-number {
+    display: inline-block;
+    padding: 5px;
+    font-size: 16px;
+    position: relative;
+}
+
+td.today-cell {
+    border-style: solid;
+    border-color: #002F5F; /* Colore del bordo */
+    border-width: 3px;
+    border-radius: 12px; /* Arrotonda gli angoli della cella */
+    background-color: #eff7ff; /* Opzionale: aggiungi un colore di sfondo per evidenziare */
+}
+
+
+
+
+
+.btn {
+    background-color: #002F5F;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;  /* Assicura che il bottone sia un cerchio */
+    height: 40px; /* Assicura che il bottone sia un cerchio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover {
+    background-color: #0070da;
+}
+
+.office-container {
+    display: grid;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 150px;
+    /* Optional: for smoother scrolling */
+    scroll-behavior: smooth;
+    width: 100%; /* Ensure it takes the full available width */
+}
+
+.office-item {
+    flex: 1;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 30px 30px;
+    border-radius: 12px; /* Bordo curvo */
+    font-size: 14px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2;
+    pointer-events: none;
+    z-index: 1000;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1); /* Ombra leggera */
+    transform: translateY(5px); /* Effetto leggero di sollevamento */
+}
+
 
