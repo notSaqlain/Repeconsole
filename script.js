@@ -2,6 +2,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const calendarBody = document.getElementById("calendar-body");
     const daysInMonth = 31;
     
+    /*let d = new Date();
+    let giorno = d.getDay();
+    for (int i = 0; i<31; i++){
+        if (i == d){
+            i:"Rosso";
+        }
+    }*/
+
+
+
     // Adjusted start day (Monday = 0, Sunday = 6)
     const startDay = (new Date(2025, 0, 1).getDay() + 6) % 7;
 
@@ -59,4 +69,5 @@ document.addEventListener("DOMContentLoaded", function() {
         calendarBody.appendChild(row);
         if (dayCount > daysInMonth) break;
     }
+
 });

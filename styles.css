@@ -6,6 +6,10 @@ body {
     padding: 20px;
 }
 
+button{
+    border-radius: 15px;
+}
+
 /* Calendar container */
 .calendar-container {
     max-width: 1000px;
@@ -43,7 +47,15 @@ header p {
 .calendar th {
     background-color: black;
     color: white;
-    font-size: 16px;
+    width: 30px; /* Regola la dimensione del cerchio */
+    height: 10px;
+    border-radius: 10%;
+    background-color: #002F5F; /* Cambia il colore di sfondo a piacere */
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+
 }
 
 /* Event Labels */
@@ -77,3 +89,11 @@ header p {
     margin: 5px;
     color: white;
 }
+.calendar th, .calendar td {
+    width: calc(100% / 7); 
+}
+
+.calendar th, .calendar td {
+    width: 14.28%; 
+}
+
