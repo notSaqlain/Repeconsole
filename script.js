@@ -1,32 +1,26 @@
 document.addEventListener("DOMContentLoaded", function() {
     const calendarBody = document.getElementById("calendar-body");
-    const daysInMonth = 31;
-    
-    /*let d = new Date();
-    let giorno = d.getDay();
-    for (int i = 0; i<31; i++){
-        if (i == d){
-            i:"Rosso";
-        }
-    }*/
+    const daysInMonth = 28; // Febbraio 2025 ha 28 giorni
 
+    // Ottenere il giorno attuale
+    let today = new Date();
+    let currentDay = today.getDate();
+    let currentMonth = today.getMonth();
+    let currentYear = today.getFullYear();
 
+    // Start day (1° febbraio 2025 è sabato → 6° giorno della settimana)
+    const startDay = (new Date(2025, 1, 1).getDay() + 6) % 7;
 
-    // Adjusted start day (Monday = 0, Sunday = 6)
-    const startDay = (new Date(2025, 0, 1).getDay() + 6) % 7;
-
-    // Events mapping
+    // Events mapping (aggiorna se necessario)
     const events = {
-        1: "Customer Insights",
-        4: "Special Offer",
-        7: "Resource List",
-        8: "Video Demo",
-        9: "Product Feature",
-        13: "Monday Motivation",
+        3: "Customer Insights",
+        7: "Special Offer",
+        10: "Resource List",
+        14: "Video Demo",
+        17: "Product Feature",
         21: "How-To Content",
-        22: "Quiz",
         24: "Weekly Wrap-Up",
-        30: "Special Offer"
+        28: "Quiz"
     };
 
     // Event colors
@@ -44,17 +38,26 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     let dayCount = 1;
-    for (let i = 0; i < 6; i++) { // Max 6 weeks
+    for (let i = 0; i < 6; i++) { // Max 6 settimane
         let row = document.createElement("tr");
         for (let j = 0; j < 7; j++) {
             let cell = document.createElement("td");
+
             if ((i === 0 && j < startDay) || dayCount > daysInMonth) {
                 cell.innerHTML = "";
             } else {
                 cell.innerHTML = `<div>${dayCount}</div>`;
                 cell.classList.add("calendar-day");
 
-                // Add event labels if available
+                if (dayCount === currentDay) {
+                    cell.style.color = "red"; // Giorno attuale in rosso
+                }
+
+                if(dayCount === 6){
+                    cell.style.color="gold";
+                }
+
+                // Aggiungi eventi se presenti
                 if (events[dayCount]) {
                     let eventDiv = document.createElement("div");
                     eventDiv.classList.add("event", eventColors[events[dayCount]]);
@@ -64,10 +67,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 dayCount++;
             }
+
             row.appendChild(cell);
         }
+
         calendarBody.appendChild(row);
         if (dayCount > daysInMonth) break;
     }
-
 });
