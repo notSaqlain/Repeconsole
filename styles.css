@@ -25,7 +25,7 @@ header p {
 .header-title-container {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Assicura che gli elementi siano distribuiti uniformemente */
+    justify-content: space-between;
     width: 100%;
 } 
 
@@ -38,7 +38,7 @@ header p {
 
 .nav-btn {
     font-size: 20px;
-    flex-grow: 0; /* Impedisce ai bottoni di crescere e influenzare la larghezza */
+    flex-grow: 0;
 }
 
 
@@ -53,7 +53,7 @@ header p {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    overflow-x: auto; /* Allow horizontal scroll if needed */
+    overflow-x: auto;
 }
 
 .calendar {
@@ -64,7 +64,7 @@ header p {
     overflow: hidden; 
     border-collapse: separate; 
     border-spacing: 2px;
-    table-layout: fixed; /* Ensure table fits within the container */
+    table-layout: fixed;
 }
 
 .calendar-day {
@@ -73,8 +73,8 @@ header p {
     position: relative;
     align-items: flex-end;
     padding-bottom: 10px;
-    width: 100%; /* Ensure day fits within the cell */
-    box-sizing: border-box; /* Include padding and border in the element's width */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .calendar th {
@@ -98,8 +98,8 @@ header p {
     margin-bottom: 5px;
     padding: 6px 12px;
     border-radius: 15px;
-    box-sizing: border-box; /* Include padding and border in the element's width */
-    width: 100%; /* Ensure event fits within the cell */
+    box-sizing: border-box;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -190,9 +190,9 @@ td.cell:hover{
 
 .parent-container { 
     display: flex;
-    justify-content: center; /* Centers both sections evenly */
-    gap: 20px; /* Keep the spacing between them */
-    padding: 0 20px; /* Add uniform spacing from left and right */
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
 }
 
 .personale-container, .office-container {
@@ -224,7 +224,7 @@ td.cell:hover{
 
 footer {
     display: flex;
-    justify-content: center; /* Centra il contenuto del footer */
+    justify-content: center;
     align-items: center;
     padding: 15px;
     border-radius: 8px;
@@ -233,7 +233,7 @@ footer {
 
 footer > div {
     display: flex;
-    justify-content: space-between; /* Garantisce una spaziatura uniforme tra le due sezioni */
+    justify-content: space-between;
     width: 100%;
     gap: 10px;
 }

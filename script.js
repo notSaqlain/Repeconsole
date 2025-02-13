@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function updateCalendar(month, year) {
-        calendarBody.innerHTML = ""; // Pulisci il contenuto della tabella
+        calendarBody.innerHTML = "";
 
         const daysInMonth = new Date(year, month + 1, 0).getDate();
         const startDay = (new Date(year, month, 1).getDay() + 6) % 7;
@@ -60,17 +60,17 @@ document.addEventListener("DOMContentLoaded", function () {
                         let eventDiv = document.createElement("div");
                         eventDiv.classList.add("event", eventColors[events[dayCount]]);
                         
-                        // Apply styling for flex layout
+                        
                         eventDiv.style.display = "flex";
                         eventDiv.style.alignItems = "center";
                         eventDiv.style.overflow = "hidden";
                         eventDiv.style.whiteSpace = "nowrap";
-                        eventDiv.style.width = "100%"; // Ensure event div fits within the cell
+                        eventDiv.style.width = "100%";
                         eventDiv.style.cursor = "pointer";
                         eventDiv.style.position = "relative";
-                        eventDiv.style.boxSizing = "border-box"; // Ensure padding and border are included in the width
+                        eventDiv.style.boxSizing = "border-box";
                     
-                        // Create image element
+                        // crea icona image
                         let img = document.createElement("img");
                         img.src = "./img/pf2.jpg";
                         img.alt = "Persona 2";
@@ -79,20 +79,19 @@ document.addEventListener("DOMContentLoaded", function () {
                         img.style.borderRadius = "50%";
                         img.style.marginRight = "5px";
                     
-                        // Create outer text container
+                        
                         let textContainer = document.createElement("div");
                         textContainer.style.overflow = "hidden";
                         textContainer.style.whiteSpace = "nowrap";
                         textContainer.style.flexGrow = "1";
                         textContainer.style.position = "relative";
                     
-                        // Create inner text div (for smooth scrolling)
+                        
                         let innerTextDiv = document.createElement("div");
                         innerTextDiv.innerText = events[dayCount];
                         innerTextDiv.style.display = "inline-block";
                         innerTextDiv.style.position = "relative";
                     
-                        // Scroll effect on hover
                         textContainer.addEventListener("mouseenter", () => {
                             let scrollWidth = innerTextDiv.scrollWidth;
                             let containerWidth = textContainer.clientWidth;
@@ -108,19 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
                             innerTextDiv.style.transform = "translateX(0)";
                         });
                     
-                        // Append text inside its container
+
                         textContainer.appendChild(innerTextDiv);
-                    
-                        // Append elements
                         eventDiv.appendChild(img);
                         eventDiv.appendChild(textContainer);
                         cell.appendChild(eventDiv);
                     }
-                    
-                    
 
                     let tooltipTimeout;
-
                     cell.addEventListener("mouseenter", (e) => {
                         if (tooltipTimeout) {
                             clearTimeout(tooltipTimeout);
