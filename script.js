@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const calendarBody = document.getElementById("calendar-body");
-    const daysInMonth = 28; // Febbraio 2025 ha 28 giorni
+    const daysInMonth = 28;
 
     let today = new Date();
     let currentDay = today.getDate();
@@ -10,34 +10,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const startDay = (new Date(2025, 1, 1).getDay() + 6) % 7;
 
     const events = {
-        3: "Persona 1",
-        7: "Special Offer",
-        10: "Resource List",
-        14: "Video Demo",
-        17: "Product Feature",
-        21: "How-To Content",
-        24: "Weekly Wrap-Up",
+        3: "Matteo", 4: "Matteo", 5: "Matteo", 6: "Matteo", 7: "Matteo", 8: "Matteo", 9: "Matteo",
+        10: "Saqlain", 11: "Saqlain", 12: "Saqlain", 13: "Saqlain", 14: "Saqlain", 15: "Saqlain", 16: "Saqlain",
+        17: "Kevin", 18: "Kevin", 19: "Kevin", 20: "Kevin", 21: "Kevin", 22: "Kevin", 23: "Kevin",
+        24: "Damiano", 25: "Damiano", 26: "Damiano", 27: "Damiano", 28: "Damiano",
     };
 
     const eventColors = {
-        "Persona 1": "blue",
-        "Product Feature": "green",
-        "Special Offer": "yellow",
-        "Weekly Wrap-Up": "orange",
-        "How-To Content": "green",
-        "Resource List": "blue",
-        "Video Demo": "green",
-        "Monday Motivation": "blue",
+        "Matteo": "blue",
+        "Damiano": "green",
+        "Saqlain": "yellow",
+        "Kevin": "red",
     };
 
     let dayCount = 1;
 
-    // Creazione del tooltip
-    let tooltip = document.createElement("div");
+    let tooltip = document.createElement("button");
     tooltip.classList.add("tooltip");
     document.body.appendChild(tooltip);
 
-    for (let i = 0; i < 6; i++) { // Max 6 settimane
+    for (let i = 0; i < 6; i++) {
         let row = document.createElement("tr");
         for (let j = 0; j < 7; j++) {
             let cell = document.createElement("td");
@@ -51,17 +43,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (dayCount === currentDay) {
                     dayDiv.classList.add("today");
+                    cell.classList.add("today-cell");
                 }
-                if (dayCount === currentDay) {
-                    dayDiv.classList.add("today");
-                    cell.classList.add("today-cell"); // Aggiungi una classe alla cella
-                }
-                
 
                 cell.appendChild(dayDiv);
 
                 if (j === 6 || j === 5) {
                     cell.style.color = "red";
+                }
+
+                if (!dayDiv || dayDiv.innerText.trim() === "") {
+                    cell.style.backgroundColor = "grey";
                 }
 
                 if (events[dayCount]) {
@@ -71,33 +63,29 @@ document.addEventListener("DOMContentLoaded", function () {
                     cell.appendChild(eventDiv);
                 }
 
-                // Tooltip quando si passa sopra il giorno
                 let tooltipTimeout;
 
                 cell.addEventListener("mouseenter", (e) => {
-                    // Nascondi temporaneamente il tooltip
                     if (tooltipTimeout) {
-                        clearTimeout(tooltipTimeout); // Se c'è già un timeout attivo, cancellalo
+                        clearTimeout(tooltipTimeout);
                     }
-                    
-                    tooltip.style.visibility = "hidden";  // Nascondi il tooltip
-                    tooltip.style.opacity = "0";         // Riduci l'opacità a 0
+
+                    tooltip.style.visibility = "hidden";
+                    tooltip.style.opacity = "0";
 
                     tooltipTimeout = setTimeout(() => {
-                        let dayDiv = e.target.querySelector('.calendar-day'); // Trova il div con il giorno
+                        let dayDiv = e.target.querySelector('.calendar-day');
                         if (dayDiv) {
-                            let day = dayDiv.innerText; // Ottieni il giorno dalla cella
-                            let eventText = events[day]; // Ottieni l'evento per quel giorno
+                            let day = dayDiv.innerText;
+                            let eventText = events[day];
                             tooltip.innerText = `Giorno ${day} Febbraio\n${eventText || 'Nessun evento'}`;
-                            tooltip.style.visibility = "visible";  // Mostra il tooltip
-                            tooltip.style.opacity = "1";            // Imposta opacità a 1
-                            tooltip.style.left = e.pageX + 10 + "px";  // Posiziona il tooltip
-                            tooltip.style.top = e.pageY - 30 + "px";   // Posiziona il tooltip
+                            tooltip.style.visibility = "visible";
+                            tooltip.style.opacity = "1";
+                            tooltip.style.left = e.pageX + 10 + "px";
+                            tooltip.style.top = e.pageY - 30 + "px";
                         }
-                    }, 250); // 500 millisecondi di ritardo (puoi regolare questo valore)
+                    }, 250);
                 });
-
-                
 
                 cell.addEventListener("mousemove", (e) => {
                     tooltip.style.left = e.pageX + 10 + "px";

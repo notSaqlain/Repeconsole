@@ -1,4 +1,4 @@
-/* General styles */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -6,11 +6,6 @@ body {
     padding: 20px;
 }
 
-button{
-    border-radius: 15px;
-}
-
-/* Calendar container */
 .calendar-container {
     max-width: 1000px;
     margin: auto;
@@ -20,7 +15,7 @@ button{
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Header */
+
 header h1 {
     font-size: 24px;
     margin: 5px 0;
@@ -29,15 +24,15 @@ header p {
     color: #666;
 }
 
-/* Calendar */
+
 .calendar {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     border-radius: 15px;
-    overflow: hidden; /* Evita che gli angoli vengano sovrascritti */
-    border-collapse: separate; /* Permette il border-radius */
-    border-spacing: 2px; /* Aggiunge spazio tra le celle per un effetto più morbido */
+    overflow: hidden; 
+    border-collapse: separate; 
+    border-spacing: 2px; 
 }
 
 
@@ -45,10 +40,10 @@ header p {
 .calendar th {
     background-color: black;
     color: white;
-    width: 30px; /* Regola la dimensione del cerchio */
+    width: 30px; 
     height: 10px;
     border-radius: 10%;
-    background-color: #002F5F; /* Cambia il colore di sfondo a piacere */
+    background-color: #002F5F; 
     color: white;
     text-align: center;
     vertical-align: middle;
@@ -56,7 +51,7 @@ header p {
 
 }
 
-/* Event Labels */
+
 .event {
     display: inline-block;
     margin-top: 5px;
@@ -68,14 +63,14 @@ header p {
     text-align: center;
 }
 
-/* Colors for different event types */
-.blue { background-color: #3498db; }  /* Customer Insights */
-.green { background-color: #2ecc71; } /* Product Feature */
-.red { background-color: #e74c3c; }   /* Customer Review */
-.yellow { background-color: #f1c40f; } /* Special Offer */
-.orange { background-color: #ff8c00; } /* Weekly Wrap-Up */
 
-/* Legend */
+.blue { background-color: #3498db; }  
+.green { background-color: #2ecc71; } 
+.red { background-color: #e74c3c; }   
+.yellow { background-color: #f1c40f; } 
+.orange { background-color: #ff8c00; } 
+
+
 .legend {
     margin-top: 20px;
 }
@@ -88,9 +83,9 @@ header p {
     color: white;
 }
 
-/* Stile per le celle della tabella */
+
 .calendar th, .calendar td {
-    border-radius: 15px; /* Arrotonda ogni cella */
+    border-radius: 15px; 
     border: 1px solid #ddd;
     padding: 20px;
     text-align: center;
@@ -98,12 +93,12 @@ header p {
     position: relative;
 }
 
-/* Stile per la prima riga (header) della tabella */
+
 .calendar thead th {
     background-color: #002F5F;
     color: white;
     padding: 10px;
-    border-radius: 20px; /* Arrotonda gli header */
+    border-radius: 20px; 
     text-align: center;
     font-weight: bold;
     width: 14.28%;
@@ -118,14 +113,11 @@ header p {
 
 td.today-cell {
     border-style: solid;
-    border-color: #002F5F; /* Colore del bordo */
+    border-color: #002F5F; 
     border-width: 3px;
-    border-radius: 12px; /* Arrotonda gli angoli della cella */
-    background-color: #eff7ff; /* Opzionale: aggiungi un colore di sfondo per evidenziare */
+    border-radius: 12px; 
+    background-color: #eff7ff; 
 }
-
-
-
 
 
 .btn {
@@ -135,8 +127,8 @@ td.today-cell {
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;
-    width: 40px;  /* Assicura che il bottone sia un cerchio */
-    height: 40px; /* Assicura che il bottone sia un cerchio */
+    width: 40px;  
+    height: 40px; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,21 +139,46 @@ td.today-cell {
 }
 
 .office-container {
-    display: grid;
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     overflow-y: auto;
     height: 150px;
-    /* Optional: for smoother scrolling */
     scroll-behavior: smooth;
-    width: 100%; /* Ensure it takes the full available width */
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid white;
+}
+
+.btn2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px;
+    width: 100%;
 }
 
 .office-item {
-    flex: 1;
-    padding: 5px;
-    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 10px;
     display: flex;
+    justify-content: center;
     align-items: center;
+    text-align: center;
+    border-bottom: 2px solid black; 
+    width: 100%; 
+    box-sizing: border-box;
+    align-self: stretch;
+}
+
+
+
+.office-item:hover {
+    background-color: #002F5F;
+    color: rgb(255, 255, 255);
 }
 
 .tooltip {
@@ -169,15 +186,16 @@ td.today-cell {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     padding: 30px 30px;
-    border-radius: 12px; /* Bordo curvo */
+    border-radius: 12px; 
     font-size: 14px;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.2s, transform 0.2;
     pointer-events: none;
     z-index: 1000;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1); /* Ombra leggera */
-    transform: translateY(5px); /* Effetto leggero di sollevamento */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1); 
+    transform: translateY(5px); 
 }
+
 
 
