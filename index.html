@@ -8,22 +8,20 @@
 </head>
 <body>
     <div class="calendar-container">
-        <header>
-            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 80px; margin-left:10px; margin-right:5%;">
+        <header class="header-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; height: 80px;">
                 <div style="font-size: 30px; font-weight: bold;">2025</div>
                 
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button style="font-size: 20px;" class="btn">&lt;</button>
-                    <h1 style="margin: 0px; font-size: 40px; font-weight: bold;">FEBBRAIO</h1>
+                    <h1 class="header-title">FEBBRAIO</h1>
                     <button style="font-size: 20px;" class="btn">&gt;</button>
                 </div>
                 
                 <div>
-                    <img src="./img/Unipol_Gruppo_Logo.svg" style="height: 55px;" alt="UNIPOL">
+                    <img src="./img/Unipol_Gruppo_Logo.svg" class="header-logo" alt="UNIPOL">
                 </div>
             </div>
-            
-            
         </header>
 
         <table class="calendar">
@@ -35,87 +33,108 @@
             <tbody id="calendar-body">
              
             </tbody>
+            
         </table>
 
-        <footer style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-radius: 8px; width: 100%;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; width: 100%;">
+       <footer style="display: flex; justify-content: center; align-items: center; padding: 15px; border-radius: 8px; width: 100%;">
+    <div style="display: flex; width: 100%; gap: 10px;">
+        <!-- Left Section: Users -->
+        <div class="left-section">
+            <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd; height: 200px; display: flex; flex-direction: column;">
                 
-                <!-- Left Section: Users -->
-                <div style="flex: 1; margin-right: 10px;">
-                    <div class = "btn2"></div>
-                        <div style="display: flex; flex-direction: column; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd; height: 150px;">
-                            <span style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">Personale</span>
-                            
-                            <div style="display: grid; grid-template-columns: repeat(2, auto); gap: 15px;">
-                                <div style="display: flex; align-items: center; gap: 10px; background: #ffeb99; padding: 5px 10px; border-radius: 20px;">
-                                    <img src="./img/pf1.jpeg" alt="Persona 1" style="width: 30px; height: 30px; border-radius: 50%;">
-                                    <span>Saqlain Khalid</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; background: #99c2ff; padding: 5px 10px; border-radius: 20px;">
-                                    <img src="./img/pf2.jpg" alt="Persona 2" style="width: 30px; height: 30px; border-radius: 50%;">
-                                    <span>Matteo Galdini</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; background: #ff9999; padding: 5px 10px; border-radius: 20px;">
-                                    <img src="./img/pf3.jpeg" alt="Persona 3" style="width: 30px; height: 30px; border-radius: 50%;">
-                                    <span>Kevin Merkaj</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; background: #99ff99; padding: 5px 10px; border-radius: 20px;">
-                                    <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
-                                    <span>Damiano Borrelli</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; background: #ae00ff; padding: 5px 10px; border-radius: 20px;">
-                                    <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
-                                    <span>Butt Abdul Mohid</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 10px; background: #8ef102; padding: 5px 10px; border-radius: 20px;">
-                                    <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
-                                    <span>Giorgio Controne</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Fixed Title -->
+                <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px; position: sticky; top: 0; background: white; padding-bottom: 10px; z-index: 10;">
+                    Personale
                 </div>
-                
-                <!-- Right Section: Offices -->
-                <div class="office-container" id="officeContainer" style="flex: 1; display: flex; flex-direction: column; background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd;">
-                    
-                    <div style="display: grid; gap: 15px;">
-                        <div class="btn2">
-                            <button class="office-item">Office 1</button>
-                            <button class="office-item">Office 2</button>
-                            <button class="office-item">Office 3</button>
-                            <button class="office-item">Office 4</button>
-                            <button class="office-item">Office 5</button>
-                            <button class="office-item">Office 6</button>
-                            <button class="office-item">Office 7</button>
-                            <button class="office-item">Office 8</button>
-                            <button class="office-item">Office 9</button>
-                            <button class="office-item">Office 10</button>
-                            <button class="office-item">Office 11</button>
-                            <button class="office-item">Office 12</button>
-                            <button class="office-item">Office 13</button>
-                            <button class="office-item">Office 14</button>
-                            <button class="office-item">Office 15</button>
-                            <button class="office-item">Office 16</button>
-                            <button class="office-item">Office 17</button>
-                            <button class="office-item">Office 18</button>
-                            <button class="office-item">Office 19</button>
-                            <button class="office-item">Office 20</button>
-                            <button class="office-item">Office 21</button>
-                            <button class="office-item">Office 22</button>
-                            <button class="office-item">Office 23</button>
-                            <button class="office-item">Office 24</button>
-                            <button class="office-item">Office 25</button>
-                            <button class="office-item">Office 26</button>
-                            <button class="office-item">Office 27</button>
-                            <button class="office-item">Office 28</button>
-                            <button class="office-item">Office 29</button>
-                            <button class="office-item">Office 30</button>
+        
+                <!-- Scrollable User List -->
+                <div style="overflow-y: auto; flex-grow: 1;">
+                    <div style="display: grid; grid-template-columns: repeat(2, auto); gap: 10px;">
+                        <!-- Users Here -->
+                        <div style="display: flex; align-items: center; gap: 10px; background: #ffeb99; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf1.jpeg" alt="Persona 1" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Saqlain Khalid</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #99c2ff; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf2.jpg" alt="Persona 2" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Matteo Galdini</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #ff9999; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf3.jpeg" alt="Persona 3" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Kevin Merkaj</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #99ff99; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Damiano Borrelli</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #ff9999; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf3.jpeg" alt="Persona 3" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Kevin Merkaj</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #99ff99; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Damiano Borrelli</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #ff9999; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf3.jpeg" alt="Persona 3" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Kevin Merkaj</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; background: #99ff99; padding: 5px 10px; border-radius: 20px;">
+                            <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
+                            <span>Damiano Borrelli</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>                
+        
+        <!-- Right Section: Offices -->
+        <div class="right-section">
+            <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd; height: 200px; display: flex; flex-direction: column;">
+                
+                <!-- Fixed Title -->
+                <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px; position: sticky; top: 0; background: white; padding-bottom: 10px; z-index: 10;">
+                    Uffici
+                </div>
+        
+                <!-- Scrollable Office List -->
+                <div style="overflow-y: auto; flex-grow: 1;">
+                    <div class="btn2" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                        <button class="office-item">Architettura società H24</button>
+                        <button class="office-item">Application Management (CICS)</button>
+                        <button class="office-item">Assistenza PdI Agenzie</button>
+                        <button class="office-item">Assistenza PdI Sedi</button>
+                        <button class="office-item">Assistenza Telefonia Mobile</button>
+                        <button class="office-item">DBA Mainframe</button>
+                        <button class="office-item">DBA Open</button>
+                        <button class="office-item">Flussi Dati</button>
+                        <button class="office-item">Gestione Reti</button>
+                        <button class="office-item">Gestione Sicurezza</button>
+                        <button class="office-item">Gestione Sicurezza Rete</button>
+                        <button class="office-item">Gestione Sistemi Windows</button>
+                        <button class="office-item">Gestione Utenze</button>
+                        <button class="office-item">Infrastruttura Windows</button>
+                        <button class="office-item">Posta Elettronica</button>
+                        <button class="office-item">Prodotti Host</button>
+                        <button class="office-item">Produzione Unix</button>
+                        <button class="office-item">Produzione Windows</button>
+                        <button class="office-item">Progettazione Client di Sede</button>
+                        <button class="office-item">Rilasci ISPW</button>
+                        <button class="office-item">Schedulazione Host</button>
+                        <button class="office-item">Schedulazione Open</button>
+                        <button class="office-item">Sistemi UNIX</button>
+                        <button class="office-item">Sistemisti Host</button>
+                        <button class="office-item">WebSphere Host</button>
+                        <button class="office-item">Monitoraggio Consumi Host</button>
+                        <button class="office-item">SuperVisor</button>
+                        <button class="office-item">Monitoraggio 24X7</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                
+</footer>
+
         
         
         

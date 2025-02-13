@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let dayCount = 1;
 
-    let tooltip = document.createElement("button");
+    let tooltip = document.createElement("div");
     tooltip.classList.add("tooltip");
     document.body.appendChild(tooltip);
 
@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     eventDiv.innerText = events[dayCount];
                     cell.appendChild(eventDiv);
                 }
+                
 
                 let tooltipTimeout;
 
