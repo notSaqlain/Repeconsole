@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
 
+
     function updateCalendar(month, year) {
         calendarBody.innerHTML = ""; // Pulisci il contenuto della tabella
 
@@ -14,17 +15,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const startDay = (new Date(year, month, 1).getDay() + 6) % 7;
 
         const events = {
-            3: "Matteo Galdini", 4: "Matteo Galdini", 5: "Matteo Galdini", 6: "Matteo Galdini", 7: "Matteo Galdini", 8: "Matteo Galdini", 9: "Matteo Galdini",
-            10: "Saqlain Khalid", 11: "Saqlain Khalid", 12: "Saqlain Khalid", 13: "Saqlain Khalid", 14: "Saqlain Khalid", 15: "Saqlain Khalid", 16: "Saqlain Khalid",
-            17: "Kevin Merkaj", 18: "Kevin Merkaj", 19: "Kevin Merkaj", 20: "Kevin Merkaj", 21: "Kevin Merkaj", 22: "Kevin Merkaj", 23: "Kevin Merkaj",
-            24: "Damiano Borrels", 25: "Damiano Borrels", 26: "Damiano Borrels", 27: "Damiano Borrels", 28: "Damiano Borrels", 29: "Damiano Borrels", 30: "Damiano Borrels", 31: "Damiano Borrels"
+            3: "Matteo Galdini 4cin", 4: "Matteo", 5: "Matteo", 6: "Matteo", 7: "Matteo", 8: "Matteo", 9: "Matteo",
+            10: "Saqlain", 11: "Saqlain", 12: "Saqlain", 13: "Saqlain", 14: "Saqlain", 15: "Saqlain", 16: "Saqlain",
+            17: "Kevin", 18: "Kevin", 19: "Kevin", 20: "Kevin", 21: "Kevin", 22: "Kevin", 23: "Kevin",
+            24: "Damiano", 25: "Damiano", 26: "Damiano", 27: "Damiano", 28: "Damiano", 29: "Damiano", 30: "Damiano", 31: "Damiano"
         };
 
         const eventColors = {
-            "Matteo Galdini": "blue",
-            "Damiano Borrels": "green",
-            "Saqlain Khalid": "yellow",
-            "Kevin Merkaj": "red",
+            "Matteo": "blue",
+            "Matteo Galdini 4cin": "blue",
+            "Damiano": "green",
+            "Saqlain": "yellow",
+            "Kevin": "red",
         };
 
         let dayCount = 1;
@@ -44,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     dayDiv.innerText = dayCount;
                     dayDiv.classList.add("calendar-day");
 
-                    // Evidenzia il giorno corrente
                     if (dayCount === currentDay && month === today.getMonth() && year === today.getFullYear()) {
                         dayDiv.classList.add("today");
                         cell.classList.add("today-cell");
@@ -59,9 +60,63 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (events[dayCount]) {
                         let eventDiv = document.createElement("div");
                         eventDiv.classList.add("event", eventColors[events[dayCount]]);
-                        eventDiv.innerText = events[dayCount];
+                        
+                        // Apply styling for flex layout
+                        eventDiv.style.display = "flex";
+                        eventDiv.style.alignItems = "center";
+                        eventDiv.style.overflow = "hidden";
+                        eventDiv.style.whiteSpace = "nowrap";
+                        eventDiv.style.width = "87%"; // Adjust as needed
+                        eventDiv.style.cursor = "pointer";
+                        eventDiv.style.position = "relative";
+                    
+                        // Create image element
+                        let img = document.createElement("img");
+                        img.src = "./img/pf2.jpg";
+                        img.alt = "Persona 2";
+                        img.style.width = "20px";
+                        img.style.height = "20px";
+                        img.style.borderRadius = "50%";
+                        img.style.marginRight = "5px";
+                    
+                        // Create outer text container
+                        let textContainer = document.createElement("div");
+                        textContainer.style.overflow = "hidden";
+                        textContainer.style.whiteSpace = "nowrap";
+                        textContainer.style.flexGrow = "1";
+                        textContainer.style.position = "relative";
+                        
+                        // Create inner text div (for smooth scrolling)
+                        let innerTextDiv = document.createElement("div");
+                        innerTextDiv.innerText = events[dayCount];
+                        innerTextDiv.style.display = "inline-block";
+                        innerTextDiv.style.position = "relative";
+                    
+                        // Scroll effect on hover
+                        textContainer.addEventListener("mouseenter", () => {
+                            let scrollWidth = innerTextDiv.scrollWidth;
+                            let containerWidth = textContainer.clientWidth;
+                    
+                            if (scrollWidth > containerWidth) {
+                                innerTextDiv.style.transition = `transform ${(scrollWidth - containerWidth) / 50}s linear`;
+                                innerTextDiv.style.transform = `translateX(-${scrollWidth - containerWidth}px)`;
+                            }
+                        });
+                    
+                        textContainer.addEventListener("mouseleave", () => {
+                            innerTextDiv.style.transition = "transform 0.5s ease-out";
+                            innerTextDiv.style.transform = "translateX(0)";
+                        });
+                    
+                        // Append text inside its container
+                        textContainer.appendChild(innerTextDiv);
+                        
+                        // Append elements
+                        eventDiv.appendChild(img);
+                        eventDiv.appendChild(textContainer);
                         cell.appendChild(eventDiv);
                     }
+                    
 
                     let tooltipTimeout;
 
@@ -76,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 let day = dayDiv.innerText;
                                 let eventText = events[day];
                                 tooltip.innerText = `Giorno ${day} ${monthNames[month]}\n${eventText || 'Nessun evento'}`;
-                                tooltip.style.visibility = "visible";
+                                
                                 tooltip.style.opacity = "1";
                                 tooltip.style.left = e.pageX + 10 + "px";
                                 tooltip.style.top = e.pageY - 30 + "px";
@@ -109,7 +164,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (dayCount > daysInMonth) break;
         }
 
-        document.getElementById("month-year").innerText = `${monthNames[month]} ${year}`;
+        document.getElementById("month-year").innerText = `${monthNames[month]}`;
+        document.getElementById("year").innerText = `${year}`;
+
+        tooltip.style.visibility = "hidden";
+        tooltip.style.opacity = "0";
     }
 
     function showPopup(day, event) {

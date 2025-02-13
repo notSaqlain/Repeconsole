@@ -76,9 +76,8 @@ header p {
 
 }
 
-
 .event {
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     text-align: center;
     position: relative;
@@ -107,20 +106,6 @@ header p {
         color: black; }   
 .yellow { background-color: #f1c40f;
         color: black; } 
-
-
-
-.legend {
-    margin-top: 20px;
-}
-.badge {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 12px;
-    font-size: 14px;
-    margin: 5px;
-    color: rgb(255, 255, 255);
-}
 
 
 .calendar th, .calendar td {
@@ -268,12 +253,6 @@ footer > div {
 }
 
 
-
-
-
-
-
-/* Popup styles */
 .popup {
     position: fixed;
     top: 0;
@@ -289,19 +268,21 @@ footer > div {
 
 .popup-content {
     background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%; 
+    height: 50vh;
+    max-height: 500px;
+    max-width: 800px;  
+    padding: 30px;  
+    border-radius: 15px;  
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
     text-align: center;
     position: relative;
 }
 
 .close-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
     cursor: pointer;
 }
-
-
