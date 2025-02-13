@@ -15,18 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const startDay = (new Date(year, month, 1).getDay() + 6) % 7;
 
         const events = {
-            3: "Matteo Galdini 4cin", 4: "Matteo", 5: "Matteo", 6: "Matteo", 7: "Matteo", 8: "Matteo", 9: "Matteo",
-            10: "Saqlain", 11: "Saqlain", 12: "Saqlain", 13: "Saqlain", 14: "Saqlain", 15: "Saqlain", 16: "Saqlain",
-            17: "Kevin", 18: "Kevin", 19: "Kevin", 20: "Kevin", 21: "Kevin", 22: "Kevin", 23: "Kevin",
-            24: "Damiano", 25: "Damiano", 26: "Damiano", 27: "Damiano", 28: "Damiano", 29: "Damiano", 30: "Damiano", 31: "Damiano"
+            3: "Galdini Matteo", 4: "Galdini Matteo", 5: "Galdini Matteo", 6: "Galdini Matteo", 7: "Galdini Matteo", 8: "Galdini Matteo", 9: "Galdini Matteo",
+            10: "Khalid Saqlain", 11: "Khalid Saqlain", 12: "Khalid Saqlain", 13: "Khalid Saqlain", 14: "Khalid Saqlain", 15: "Khalid Saqlain", 16: "Khalid Saqlain",
+            17: "Merkaj Kevin", 18: "Merkaj Kevin", 19: "Merkaj Kevin", 20: "Merkaj Kevin", 21: "Merkaj Kevin", 22: "Merkaj Kevin", 23: "Merkaj Kevin",
+            24: "Borrelli Damiano", 25: "Borrelli Damiano", 26: "Borrelli Damiano", 27: "Borrelli Damiano", 28: "Borrelli Damiano", 29: "Borrelli Damiano", 30: "Borrelli Damiano", 31: "Borrelli Damiano"
         };
 
         const eventColors = {
-            "Matteo": "blue",
-            "Matteo Galdini 4cin": "blue",
-            "Damiano": "green",
-            "Saqlain": "yellow",
-            "Kevin": "red",
+            "Galdini Matteo": "blue",
+            "Borrelli Damiano": "green",
+            "Khalid Saqlain": "yellow",
+            "Merkaj Kevin": "red",
         };
 
         let dayCount = 1;
@@ -66,9 +65,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         eventDiv.style.alignItems = "center";
                         eventDiv.style.overflow = "hidden";
                         eventDiv.style.whiteSpace = "nowrap";
-                        eventDiv.style.width = "87%"; // Adjust as needed
+                        eventDiv.style.width = "100%"; // Ensure event div fits within the cell
                         eventDiv.style.cursor = "pointer";
                         eventDiv.style.position = "relative";
+                        eventDiv.style.boxSizing = "border-box"; // Ensure padding and border are included in the width
                     
                         // Create image element
                         let img = document.createElement("img");
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         textContainer.style.whiteSpace = "nowrap";
                         textContainer.style.flexGrow = "1";
                         textContainer.style.position = "relative";
-                        
+                    
                         // Create inner text div (for smooth scrolling)
                         let innerTextDiv = document.createElement("div");
                         innerTextDiv.innerText = events[dayCount];
@@ -110,12 +110,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     
                         // Append text inside its container
                         textContainer.appendChild(innerTextDiv);
-                        
+                    
                         // Append elements
                         eventDiv.appendChild(img);
                         eventDiv.appendChild(textContainer);
                         cell.appendChild(eventDiv);
                     }
+                    
                     
 
                     let tooltipTimeout;

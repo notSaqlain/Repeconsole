@@ -5,16 +5,6 @@ body {
     padding: 20px;
 }
 
-.calendar-container {
-    max-width: 85%;
-    margin: auto;
-    background: rgb(255, 255, 255);
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-
 header h1 {
     font-size: 24px;
     margin: 5px 0;
@@ -23,7 +13,7 @@ header p {
     color: #666;
 }
 
-.header-container, .calendar-container {
+.header-container {
     width: 97%;
     margin: 0 auto;
 }
@@ -33,7 +23,7 @@ header p {
     align-items: center;
     justify-content: space-between; /* Assicura che gli elementi siano distribuiti uniformemente */
     width: 100%;
-}
+} 
 
 .header-title {
     font-size: 40px;
@@ -52,6 +42,16 @@ header p {
     height: 55px;
 }
 
+.calendar-container {
+    max-width: 85%;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Allow horizontal scroll if needed */
+}
+
 .calendar {
     width: 100%;
     border-collapse: collapse;
@@ -59,7 +59,18 @@ header p {
     border-radius: 15px;
     overflow: hidden; 
     border-collapse: separate; 
-    border-spacing: 2px; 
+    border-spacing: 2px;
+    table-layout: fixed; /* Ensure table fits within the container */
+}
+
+.calendar-day {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: flex-end;
+    padding-bottom: 10px;
+    width: 100%; /* Ensure day fits within the cell */
+    box-sizing: border-box; /* Include padding and border in the element's width */
 }
 
 .calendar th {
@@ -79,24 +90,18 @@ header p {
 .event {
     color: rgb(255, 255, 255);
     text-align: center;
-    text-align: center;
     position: relative;
     margin-bottom: 5px;
-    text-align: center;
     padding: 6px 12px;
     border-radius: 15px;
-    
-}
-
-.calendar-day {
+    box-sizing: border-box; /* Include padding and border in the element's width */
+    width: 100%; /* Ensure event fits within the cell */
     display: flex;
+    align-items: center;
     justify-content: center;
-    position: relative;
-    align-items: flex-end;
-    padding-bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
 }
-
-
 
 .blue { background-color: #3498db;
         color: black; }  
@@ -140,7 +145,7 @@ td.today-cell {
     border-color: #002F5F; 
     border-width: 3px;
     border-radius: 12px; 
-    background-color: #eff7ff; 
+    background-color: #e4ecff; 
      
 }
 
@@ -191,6 +196,8 @@ td.cell:hover{
     max-width: 50%;
 }
 
+
+ 
 .office-item {
     padding: 10px;
     background: #ffffff;
@@ -209,23 +216,6 @@ td.cell:hover{
     background-color: #002F5F;
     color: rgb(255, 255, 255);
 }
-
-.tooltip {
-    position: absolute;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    padding: 30px 30px;
-    border-radius: 12px; 
-    font-size: 14px;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.2s, transform 0.2;
-    pointer-events: none;
-    z-index: 1000;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 1); 
-    transform: translateY(5px); 
-}
-
 
 
 footer {
@@ -251,7 +241,6 @@ footer > div {
 .right-section {
     flex: 0.6;
 }
-
 
 .popup {
     position: fixed;
