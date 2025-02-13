@@ -195,12 +195,48 @@ td.cell:hover{
     padding: 0 20px;
 }
 
-.personale-container, .office-container {
+.office-container {
     flex: 1;
     max-width: 50%;
 }
 
+.personale-container {
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+}
 
+.personale-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #ffeb99;
+    padding: 5px 10px;
+    border-radius: 20px;
+    position: relative;
+    width: 150px; /* Adjust width as needed */
+}
+
+.personale-item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.personale-name {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px; /* Adjust so it fits within the container */
+}
+
+/* Scrolling effect on hover */
+.personale-name:hover {
+    animation: scrollText 3s linear infinite;
+}
  
 .office-item {
     padding: 10px;
@@ -280,6 +316,10 @@ footer > div {
     cursor: pointer;
 }
 
+@keyframes scrollText {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
 
 @media screen and (max-width: 768px) {
     .header-container, .calendar-container, footer > div {
