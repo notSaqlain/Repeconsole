@@ -38,46 +38,68 @@
                 <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd; height: 200px; display: flex; flex-direction: column;">
                     
                     <!-- Fixed Title -->
-                    <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px; position: sticky; top: 0; background: white; padding-bottom: 10px; z-index: 10;">
-                        Personale
+                    <div class="container">
+                        <div class="left">
+                            Personale
+                        </div>
+                        <div class="right">
+                            {utente}
+                        </div>
                     </div>
             
                     <!-- Scrollable User List -->
                     <div style="overflow-y: auto; flex-grow: 1;">
                         <div style="display: grid; grid-template-columns: repeat(2, auto); gap: 10px;">
                             <!-- Users Here -->
-                            <div style="display: flex; align-items: center; gap: 10px; background: #ffeb99; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf1.jpeg" alt="Persona 1" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Saqlain Khalid</span>
+                            <div class="user-container" style="background: #f1c40f;">
+                                <img src="./img/pf2.jpg" alt="Persona 1" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Saqlain Khalid • Saqlain Khalid •</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px; background: #99c2ff; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf2.jpg" alt="Persona 2" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Matteo Galdini</span>
+                            <div class="user-container" style="background: #e74c3c;">
+                                <img src="./img/pf1.jpeg" alt="Persona 2" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Merkaj Kevin • Merkaj Kevin •</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px; background: #ff9999; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf3.jpeg" alt="Persona 3" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Kevin Merkaj</span>
+                            <div class="user-container" style="background: #2ecc71;">
+                                <img src="./img/pf3.jpeg" alt="Persona 3" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Damiano Borrelli • Damiano Borrelli •</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px; background: #99ff99; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Damiano Borrelli</span>
+                            <div class="user-container" style="background: #3498db;">
+                                <img src="./img/pf4.jpg" alt="Persona 4" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Matteo Galdini • Matteo Galdini •</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px; background: #ff9999; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf3.jpeg" alt="Persona 3" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Kevin Merkaj</span>
+                            <div class="user-container" style="background: #99ffeb;">
+                                <img src="./img/pf1.jpeg" alt="Persona 5" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Butt Abdul Mohid • Butt Abdul Mohid •</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px; background: #99ff99; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Damiano Borrelli</span>
+                            <div class="user-container" style="background: #f599ff;">
+                                <img src="./img/pf1.jpeg" alt="Persona 6" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Gambetti Valerio • Gambetti Valerio •</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px; background: #ff9999; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf3.jpeg" alt="Persona 3" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Kevin Merkaj</span>
+                            <div class="user-container" style="background: #b999ff;">
+                                <img src="./img/pf1.jpeg" alt="Persona 7" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Giorgio • Controne</span>
+                                </div>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 10px; background: #99ff99; padding: 5px 10px; border-radius: 20px;">
-                                <img src="./img/pf4.jpg" alt="Persona 4" style="width: 30px; height: 30px; border-radius: 50%;">
-                                <span>Damiano Borrelli</span>
+                            <div class="user-container" style="background: #17bdbd;">
+                                <img src="./img/pf1.jpeg" alt="Persona 8" class="profile-img">
+                                <div class="text-container">
+                                    <span class="text-wrapper">Sto • Cazzo •</span>
+                                </div>
                             </div>
+                            <!-- END -->
                         </div>
                     </div>
                 </div>
@@ -88,8 +110,13 @@
                 <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd; height: 200px; display: flex; flex-direction: column;">
                     
                     <!-- Fixed Title -->
-                    <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px; position: sticky; top: 0; background: white; padding-bottom: 10px; z-index: 10;">
-                        Uffici
+                    <div class="container">
+                        <div class="left">
+                            UFFICI
+                        </div>
+                        <div class="right">
+                            {UFFICIO SELEZIONATO}
+                        </div>
                     </div>
         
                     <!-- Scrollable Office List -->

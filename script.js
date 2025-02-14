@@ -208,4 +208,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     updateCalendar(currentMonth, currentYear);
+
+    const tansitionTimePerPixel = 0.01;
+    const textBoxes = document.querySelectorAll(
+    ".textBox"
+    );
+    textBoxes.forEach((textBox) => {
+    textBox.addEventListener('mouseenter', () => {
+        let textWidth = textBox.lastChild.clientWidth;
+        let boxWidth = parseFloat(getComputedStyle(textBox).width);
+        let translateVal = Math.min(boxWidth - textWidth, 0);
+        let translateTime = - tansitionTimePerPixel * translateVal + "s";
+        textBox.lastChild.style.transitionDuration = translateTime;
+        textBox.lastChild.style.transform = "translateX("+translateVal+"px)";
+    })
+    textBox.addEventListener('mouseleave', () => {
+        textBox.lastChild.style.transitionDuration = "0.3s";
+        textBox.lastChild.style.transform = "translateX(0)";
+    })
+    });
 });
