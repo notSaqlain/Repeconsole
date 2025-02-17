@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Content Calendar</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttons.scss">
+    <link rel="stylesheet" 
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="calendar-container">
@@ -28,6 +31,36 @@
             </tr>
         </thead>
         <tbody id="calendar-body">
+            <!-- The Popup -->
+            <div id="popup" class="popup">
+                <div class="popup-content">
+                    <span id="closePopup" class="close">&times;</span>
+                    <!--<a class="animazione" href="#" role="button" >
+                        <span>remove</span>
+                        <div class="icon">
+                            <i class="fa fa-remove"></i>
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </a>-->
+                    <h2>
+                        Giorno: GG/MM
+                    </h2>
+                    <img src="./img/pf1.jpeg" alt="Persona" style="width: 50px; height: 50px; border-radius: 50%;">
+                    <h3>Cognome Nome</h3>
+                    <h3> Contatto: +39 1234567890</h3>
+                    <br><br><br>
+                    <div class="tooltip-container">
+                        <div class="button-container"  style="background: rgb(101, 255, 101);">
+                            <img src="./img/plus.png" alt="Bin Icon" height="20px" width="20px" class="icon">
+                            <span class="button-text">Aggiungi Utente</span>
+                        </div>
+                        <div class="button-container" style="background: rgb(255, 95, 95);">
+                            <img src="./img/delete.png" alt="Bin Icon" height="20px" width="20px" class="icon">
+                            <span class="button-text">Rimuovi Utente</span>
+                        </div>
+                    </div>
+                 </div>
+            </div>
         </tbody>
     </table>
     
@@ -43,7 +76,7 @@
                             Personale
                         </div>
                         <div class="right">
-                            {utente}
+                            <p style="font-size: 1.5vh;"><%= request.getRemoteUser() %></p>
                         </div>
                     </div>
             

@@ -166,28 +166,38 @@ document.addEventListener("DOMContentLoaded", function () {
         tooltip.style.opacity = "0";
     }
 
-    function showPopup(day, event) {
-        const popup = document.createElement("div");
-        popup.classList.add("popup");
-        popup.innerHTML = `
-            <div class="popup-content">
-                <span class="close-btn">&times;</span>
-                <h2>GIORNO ${day}</h2>
-                <p>Event: ${event || 'No event'}</p>
-            </div>
-        `;
-        document.body.appendChild(popup);
+    // Get references to the popup and close button
+    const popup = document.getElementById('popup');
+    const closePopup = document.getElementById('closePopup');
 
-        popup.querySelector(".close-btn").addEventListener("click", () => {
-            popup.remove();
+    // Function to show the popup
+    function showPopup() {
+        popup.style.display = 'flex';
+
+        // Add event listener for the button inside the popup
+        document.querySelector('.button-container').addEventListener('mouseover', function() {
+            document.querySelector('.tooltip-content').style.opacity = '1';
         });
-
-        window.addEventListener("click", (e) => {
-            if (e.target === popup) {
-                popup.remove();
-            }
+        
+        document.querySelector('.button-container').addEventListener('mouseout', function() {
+            document.querySelector('.tooltip-content').style.opacity = '0';
         });
     }
+
+    // Function to hide the popup
+    function hidePopup() {
+        popup.style.display = 'none';
+    }
+
+    // Add click event listeners to all cells (days)
+    const cells = document.querySelectorAll('td'); // Assuming your days are in <td> elements
+    cells.forEach(cell => {
+        cell.addEventListener('click', showPopup);
+    });
+
+    // Hide the popup when the close button is clicked
+    closePopup.addEventListener('click', hidePopup);
+
 
     document.querySelector(".btn-prev").addEventListener("click", () => {
         currentMonth--;
