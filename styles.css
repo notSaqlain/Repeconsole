@@ -388,20 +388,29 @@ footer > div {
     border-radius: 50%;
     flex-shrink: 0; /* Prevents shrinking */
 }
-
 .text-container {
     overflow: hidden;
     white-space: nowrap;
     position: relative;
-    width: 80px; /* Adjust as needed */
+    flex-grow: 1;
+    min-width: 50px;
 }
 
 .text-wrapper {
     display: inline-block;
     white-space: nowrap;
-    padding-right: 40px; /* Space to avoid text cut-off */
+    padding-right: 40px;
+    transform: translateX(0);
+    transition: transform 0.5s ease-out; /* Smooth reset */
+}
+
+.user-container:hover .text-wrapper {
     animation: scrollText 5s linear infinite;
-    transition: transform 0.5s ease; /* Added transition property */
+}
+
+.user-container:not(:hover) .text-wrapper {
+    animation: none;
+    transform: translateX(0); /* Reset position */
 }
 
 @keyframes scrollText {
@@ -412,17 +421,6 @@ footer > div {
         transform: translateX(-50%);
     }
 }
-
-.user-container:hover .text-wrapper {
-    animation-play-state: running;
-    transform: translateX(-50%); /* Adjust to your desired position when hovered */
-}
-
-.user-container:not(:hover) .text-wrapper {
-    animation-play-state: paused;
-    transform: translateX(0); /* Reset to default position when not hovered */
-}
-
 
 
 
