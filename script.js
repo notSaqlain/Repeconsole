@@ -1,4 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const users = document.querySelectorAll('.user-container');
+    const userPopup = document.getElementById('user-popup');
+    const closeUserPopup = document.getElementById('closeUserPopup');
+
+    function showPopup(userName) {
+        document.getElementById('popup-name').innerText = userName;
+        popup.style.display = 'flex';
+    }
+
+    function hidePopup() {
+        popup.style.display = 'none';
+        const addUserBtn = document.querySelector('.button-container[style="background: rgb(101, 255, 101);"]');
+        const removeUserBtn = document.querySelector('.button-container[style="background: rgb(255, 95, 95);"]');
+        const popupEmail = document.querySelector('.popup-email');
+        if (popupEmail) {
+            popupEmail.remove();
+        }
+
+        const plusIcons = document.querySelectorAll('.plus');
+        const binIcons = document.querySelectorAll('.bin');
+        plusIcons.forEach(icon => icon.style.display = 'block');
+        binIcons.forEach(icon => icon.style.display = 'block');
+    }
+
+    closePopup.addEventListener('click', hidePopup);
+
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            hidePopup();
+        }
+    });
+
+    users.forEach(user => {
+        user.addEventListener('click', () => {
+            const userName = user.getAttribute('data-user');
+            showUserPopup(userName);
+        });
+    });
+
+    closeUserPopup.addEventListener('click', hideUserPopup);
+
+    function showUserPopup(userName) {
+        document.getElementById('user-popup-name').innerText = userName;
+        document.getElementById('user-popup-email').innerText = `email: ${userName.toLowerCase().replace(' ', '.')}@unipol.it`;
+        userPopup.style.display = 'flex';
+    }
+
+    function hideUserPopup() {
+        userPopup.style.display = 'none';
+    }
+
+    window.addEventListener('click', (event) => {
+        if (event.target === userPopup) {
+            hideUserPopup();
+        }
+    });
+
     const calendarBody = document.getElementById("calendar-body");
     const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
     
@@ -6,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentDay = today.getDate();
     let currentMonth = today.getMonth();
     let currentYear = today.getFullYear();
-
 
     function updateCalendar(month, year) {
         calendarBody.innerHTML = "";
@@ -59,8 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (events[dayCount]) {
                         let eventDiv = document.createElement("div");
                         eventDiv.classList.add("event", eventColors[events[dayCount]]);
-                        
-                        
+
                         eventDiv.style.display = "flex";
                         eventDiv.style.alignItems = "center";
                         eventDiv.style.overflow = "hidden";
@@ -69,8 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         eventDiv.style.cursor = "pointer";
                         eventDiv.style.position = "relative";
                         eventDiv.style.boxSizing = "border-box";
-                    
-                        // crea icona image
+
                         let img = document.createElement("img");
                         img.src = "./img/pf2.jpg";
                         img.alt = "Persona 2";
@@ -78,35 +132,32 @@ document.addEventListener("DOMContentLoaded", function () {
                         img.style.height = "20px";
                         img.style.borderRadius = "50%";
                         img.style.marginRight = "5px";
-                    
-                        
+
                         let textContainer = document.createElement("div");
                         textContainer.style.overflow = "hidden";
                         textContainer.style.whiteSpace = "nowrap";
                         textContainer.style.flexGrow = "1";
                         textContainer.style.position = "relative";
-                    
-                        
+
                         let innerTextDiv = document.createElement("div");
                         innerTextDiv.innerText = events[dayCount];
                         innerTextDiv.style.display = "inline-block";
                         innerTextDiv.style.position = "relative";
-                    
+
                         textContainer.addEventListener("mouseenter", () => {
                             let scrollWidth = innerTextDiv.scrollWidth;
                             let containerWidth = textContainer.clientWidth;
-                    
+
                             if (scrollWidth > containerWidth) {
                                 innerTextDiv.style.transition = `transform ${(scrollWidth - containerWidth) / 50}s linear`;
                                 innerTextDiv.style.transform = `translateX(-${scrollWidth - containerWidth}px)`;
                             }
                         });
-                    
+
                         textContainer.addEventListener("mouseleave", () => {
                             innerTextDiv.style.transition = "transform 0.5s ease-out";
                             innerTextDiv.style.transform = "translateX(0)";
                         });
-                    
 
                         textContainer.appendChild(innerTextDiv);
                         eventDiv.appendChild(img);
@@ -126,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 let day = dayDiv.innerText;
                                 let eventText = events[day];
                                 tooltip.innerText = `Giorno ${day} ${monthNames[month]}\n${eventText || 'Nessun evento'}`;
-                                
+
                                 tooltip.style.opacity = "1";
                                 tooltip.style.left = e.pageX + 10 + "px";
                                 tooltip.style.top = e.pageY - 30 + "px";
@@ -166,39 +217,6 @@ document.addEventListener("DOMContentLoaded", function () {
         tooltip.style.opacity = "0";
     }
 
-    // Get references to the popup and close button
-    const popup = document.getElementById('popup');
-    const closePopup = document.getElementById('closePopup');
-
-    // Function to show the popup
-    function showPopup() {
-        popup.style.display = 'flex';
-
-        // Add event listener for the button inside the popup
-        document.querySelector('.button-container').addEventListener('mouseover', function() {
-            document.querySelector('.tooltip-content').style.opacity = '1';
-        });
-        
-        document.querySelector('.button-container').addEventListener('mouseout', function() {
-            document.querySelector('.tooltip-content').style.opacity = '0';
-        });
-    }
-
-    // Function to hide the popup
-    function hidePopup() {
-        popup.style.display = 'none';
-    }
-
-    // Add click event listeners to all cells (days)
-    const cells = document.querySelectorAll('td'); // Assuming your days are in <td> elements
-    cells.forEach(cell => {
-        cell.addEventListener('click', showPopup);
-    });
-
-    // Hide the popup when the close button is clicked
-    closePopup.addEventListener('click', hidePopup);
-
-
     document.querySelector(".btn-prev").addEventListener("click", () => {
         currentMonth--;
         if (currentMonth < 0) {
@@ -221,20 +239,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const tansitionTimePerPixel = 0.01;
     const textBoxes = document.querySelectorAll(
-    ".textBox"
+        ".textBox"
     );
     textBoxes.forEach((textBox) => {
-    textBox.addEventListener('mouseenter', () => {
-        let textWidth = textBox.lastChild.clientWidth;
-        let boxWidth = parseFloat(getComputedStyle(textBox).width);
-        let translateVal = Math.min(boxWidth - textWidth, 0);
-        let translateTime = - tansitionTimePerPixel * translateVal + "s";
-        textBox.lastChild.style.transitionDuration = translateTime;
-        textBox.lastChild.style.transform = "translateX("+translateVal+"px)";
-    })
-    textBox.addEventListener('mouseleave', () => {
-        textBox.lastChild.style.transitionDuration = "0.3s";
-        textBox.lastChild.style.transform = "translateX(0)";
-    })
+        textBox.addEventListener('mouseenter', () => {
+            let textWidth = textBox.lastChild.clientWidth;
+            let boxWidth = parseFloat(getComputedStyle(textBox).width);
+            let translateVal = Math.min(boxWidth - textWidth, 0);
+            let translateTime = - tansitionTimePerPixel * translateVal + "s";
+            textBox.lastChild.style.transitionDuration = translateTime;
+            textBox.lastChild.style.transform = "translateX(" + translateVal + "px)";
+        });
+        textBox.addEventListener('mouseleave', () => {
+            textBox.lastChild.style.transitionDuration = "0.3s";
+            textBox.lastChild.style.transform = "translateX(0)";
+        });
     });
 });

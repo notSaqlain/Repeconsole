@@ -1,7 +1,6 @@
-* {
+*{
     box-sizing: border-box;
 }
-
 
 body {
     font-family: "Arial", sans-serif;
@@ -14,6 +13,7 @@ header h1 {
     font-size: 24px;
     margin: 5px 0;
 }
+
 header p {
     color: #666;
 }
@@ -28,7 +28,7 @@ header p {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-} 
+}
 
 .header-title {
     font-size: 40px;
@@ -41,7 +41,6 @@ header p {
     font-size: 20px;
     flex-grow: 0;
 }
-
 
 .header-logo {
     height: 55px;
@@ -62,8 +61,8 @@ header p {
     border-collapse: collapse;
     margin-top: 20px;
     border-radius: 15px;
-    overflow: hidden; 
-    border-collapse: separate; 
+    overflow: hidden;
+    border-collapse: separate;
     border-spacing: 2px;
     table-layout: fixed;
 }
@@ -81,15 +80,14 @@ header p {
 .calendar th {
     background-color: black;
     color: white;
-    width: 30px; 
+    width: 30px;
     height: 10px;
     border-radius: 10%;
-    background-color: #002F5F; 
+    background-color: #002F5F;
     color: white;
     text-align: center;
     vertical-align: middle;
     font-weight: bold;
-
 }
 
 .event {
@@ -108,18 +106,13 @@ header p {
     white-space: nowrap;
 }
 
-.blue { background-color: #3498db;
-        color: black; }  
-.green { background-color: #2ecc71;
-        color: black; } 
-.red { background-color: #e74c3c;
-        color: black; }   
-.yellow { background-color: #f1c40f;
-        color: black; } 
-
+.blue { background-color: #3498db; color: black; }
+.green { background-color: #2ecc71; color: black; }
+.red { background-color: #e74c3c; color: black; }
+.yellow { background-color: #f1c40f; color: black; }
 
 .calendar th, .calendar td {
-    border-radius: 15px; 
+    border-radius: 15px;
     border: 1px solid #dadada;
     padding: 20px;
     text-align: center;
@@ -127,12 +120,11 @@ header p {
     position: relative;
 }
 
-
 .calendar thead th {
     background-color: #002F5F;
     color: white;
     padding: 10px;
-    border-radius: 20px; 
+    border-radius: 20px;
     text-align: center;
     font-weight: bold;
     width: 14.28%;
@@ -147,19 +139,17 @@ header p {
 
 td.today-cell {
     border-style: solid;
-    border-color: #002F5F; 
+    border-color: #002F5F;
     border-width: 3px;
-    border-radius: 12px; 
-    background-color: #e4ecff; 
-     
+    border-radius: 12px;
+    background-color: #e4ecff;
 }
 
-td.cell:hover{
+td.cell:hover {
     border-style: solid;
     cursor: pointer;
-    border-color: #c8cfd5; 
-    background-color: #e6e6e6; 
-    
+    border-color: #c8cfd5;
+    background-color: #e6e6e6;
 }
 
 .btn {
@@ -169,12 +159,12 @@ td.cell:hover{
     padding: 10px;
     border-radius: 50%;
     cursor: pointer;
-    width: 40px;  
-    height: 40px; 
+    width: 40px;
+    height: 40px;
     display: grid;
     align-items: center;
     justify-content: center;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .btn:hover {
@@ -183,13 +173,12 @@ td.cell:hover{
 
 .btn2 {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     width: 100%;
-    
 }
 
-.parent-container { 
+.parent-container {
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -234,11 +223,10 @@ td.cell:hover{
     max-width: 100px;
 }
 
-/* Scrolling effect on hover */
 .personale-name:hover {
     animation: scrollText 3s linear infinite;
 }
- 
+
 .office-item {
     padding: 10px;
     background: #ffffff;
@@ -248,7 +236,7 @@ td.cell:hover{
     align-items: center;
     text-align: center;
     border: 2px solid black;
-    width: 100%; 
+    width: 100%;
     box-sizing: border-box;
     align-self: stretch;
 }
@@ -310,7 +298,6 @@ footer > div {
     z-index: 1001;
 }
 
-
 .close {
     position: absolute;
     top: 10px;
@@ -323,15 +310,20 @@ footer > div {
     color: red;
 }
 
-/* scrollText (Personale) */
 .user-container {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 5px 10px;
     border-radius: 20px;
+    border: 2px solid transparent;
     position: relative;
     overflow: hidden;
+}
+
+.user-container:hover {
+    cursor: pointer;
+    border-color: black !important;
 }
 
 .profile-img {
@@ -374,7 +366,6 @@ footer > div {
         transform: translateX(-50%);
     }
 }
-
 
 /* UTENTE */
 .container {
@@ -422,7 +413,6 @@ footer > div {
     transition: all 0.3s;
 }
 
-
 .button-container:hover {
     gap: 10px;
 }
@@ -436,9 +426,7 @@ footer > div {
     font-size: 14px;
 }
 
-
 /* responsive */
-
 @media screen and (max-width: 768px) {
     .header-container, .calendar-container, footer > div {
         flex-direction: column;
