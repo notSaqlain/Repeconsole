@@ -1,60 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const users = document.querySelectorAll('.user-container');
-    const userPopup = document.getElementById('user-popup');
-    const closeUserPopup = document.getElementById('closeUserPopup');
-
-    function showPopup(userName) {
-        document.getElementById('popup-name').innerText = userName;
-        popup.style.display = 'flex';
-    }
-
-    function hidePopup() {
-        popup.style.display = 'none';
-        const addUserBtn = document.querySelector('.button-container[style="background: rgb(101, 255, 101);"]');
-        const removeUserBtn = document.querySelector('.button-container[style="background: rgb(255, 95, 95);"]');
-        const popupEmail = document.querySelector('.popup-email');
-        if (popupEmail) {
-            popupEmail.remove();
-        }
-
-        const plusIcons = document.querySelectorAll('.plus');
-        const binIcons = document.querySelectorAll('.bin');
-        plusIcons.forEach(icon => icon.style.display = 'block');
-        binIcons.forEach(icon => icon.style.display = 'block');
-    }
-
-    closePopup.addEventListener('click', hidePopup);
-
-    window.addEventListener('click', (event) => {
-        if (event.target === popup) {
-            hidePopup();
-        }
-    });
-
-    users.forEach(user => {
-        user.addEventListener('click', () => {
-            const userName = user.getAttribute('data-user');
-            showUserPopup(userName);
-        });
-    });
-
-    closeUserPopup.addEventListener('click', hideUserPopup);
-
-    function showUserPopup(userName) {
-        document.getElementById('user-popup-name').innerText = userName;
-        document.getElementById('user-popup-email').innerText = `email: ${userName.toLowerCase().replace(' ', '.')}@unipol.it`;
-        userPopup.style.display = 'flex';
-    }
-
-    function hideUserPopup() {
-        userPopup.style.display = 'none';
-    }
-
-    window.addEventListener('click', (event) => {
-        if (event.target === userPopup) {
-            hideUserPopup();
-        }
-    });
 
     const calendarBody = document.getElementById("calendar-body");
     const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
@@ -197,7 +141,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     cell.addEventListener("click", () => {
                         let day = dayDiv.innerText;
-                        showPopup(parseInt(day, 10), events[dayCount]);
+                        const user_details = cell.getAttribute('data-user');
+                        showPopup(parseInt(day, 10), events[dayCount], user_details);
                     });
 
                     dayCount++;
@@ -241,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const textBoxes = document.querySelectorAll(
         ".textBox"
     );
+
     textBoxes.forEach((textBox) => {
         textBox.addEventListener('mouseenter', () => {
             let textWidth = textBox.lastChild.clientWidth;
@@ -255,4 +201,79 @@ document.addEventListener("DOMContentLoaded", function () {
             textBox.lastChild.style.transform = "translateX(0)";
         });
     });
+
+
+    /* POPUP */
+    const users = document.querySelectorAll('.user-container');
+    const userPopup = document.getElementById('user-popup');
+    const closeUserPopup = document.getElementById('closeUserPopup');
+
+    function showPopup(userName, user_details) {
+        document.getElementById('popup-name').innerText = userName;
+        document.getElementById('user-popup-name').innerText = user_details;
+        document.getElementById('user-popup-email').innerText = `email: ${user_details.toLowerCase().replace(' ', '.')}@unipol.it`;
+        popup.style.display = 'flex';
+    }
+
+    function hidePopup() {
+        popup.style.display = 'none';
+        const addUserBtn = document.querySelector('.button-container[style="background: rgb(101, 255, 101);"]');
+        const removeUserBtn = document.querySelector('.button-container[style="background: rgb(255, 95, 95);"]');
+        const popupEmail = document.querySelector('.popup-email');
+        if (popupEmail) {
+            popupEmail.remove();
+        }
+
+    }
+
+    closePopup.addEventListener('click', hidePopup);
+
+    /*CHIUDE POPUP SE CLICCO FUORI */
+    window.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            hidePopup();
+        }
+    });
+
+    /*POPUP UTENTI */
+    users.forEach(user => {
+        user.addEventListener('click', () => {
+            const userName = user.getAttribute('data-user');
+            showUserPopup(userName);
+        });
+    });
+
+    closeUserPopup.addEventListener('click', hideUserPopup);
+
+    function showUserPopup(userName) {
+        document.getElementById('user-popup-name').innerText = userName;
+        document.getElementById('user-popup-email').innerText = `email: ${userName.toLowerCase().replace(' ', '.')}@unipol.it`;
+        userPopup.style.display = 'flex';
+    }
+
+    function hideUserPopup() {
+        userPopup.style.display = 'none';
+    }
+
+    /*CHIUDE POPUP SE CLICCO FUORI */
+    window.addEventListener('click', (event) => {
+        if (event.target === userPopup) {
+            hideUserPopup();
+        }
+    });
+
+
+    /* SELEZIONA UFFICI */
+    const officeItems = document.querySelectorAll('.office-item');
+    const selectedOfficeElement = document.getElementById('selected-office');
+    officeItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove the 'active' class from all buttons
+            officeItems.forEach(office => office.classList.remove('active'));
+            // Add the 'active' class to the clicked button
+            this.classList.add('active');
+            selectedOfficeElement.textContent = this.textContent;
+        });
+    });
+
 });

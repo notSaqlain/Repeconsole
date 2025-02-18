@@ -1,0 +1,32 @@
+[
+  {
+    "date": "2025-02-03",
+    "personName": "Galdini Matteo",
+    "color": "blue"
+  },
+  {
+    "date": "2025-02-05",
+    "personName": "Khalid Saqlain",
+    "color": "yellow"
+  },
+  {
+    "date": "2025-02-10",
+    "personName": "Merkaj Kevin",
+    "color": "red"
+  },
+  {
+    "date": "2025-02-17",
+    "personName": "Merkaj Kevin",
+    "color": "red"
+  },
+  {
+    "date": "2025-02-24",
+    "personName": "Borrelli Damiano",
+    "color": "green"
+  },
+  {
+    "date": "2025-02-28",
+    "personName": "Khalid Saqlain",
+    "color": "yellow"
+  }
+]

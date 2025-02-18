@@ -10,10 +10,10 @@
     <div class="calendar-container">
         <header class="header-container">
             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <div style="font-size: 220%; font-weight: bold;" id="year">2025</div>
+                <div style="font-size: 220%; font-weight: bold;" id="year"></div>
                 <div class="header-title-container" style="position: relative; flex-grow: 1; display: flex; justify-content: center; align-items: center;">
                     <button class="nav-btn btn btn-prev" style="position: absolute; left: 30%; top: 50%; transform: translateY(-50%);">&#8882;</button>
-                    <h1 id="month-year" class="header-title">FEBBRAIO 2025</h1>
+                    <h1 id="month-year" class="header-title"></h1>
                     <button class="nav-btn btn btn-next" style="position: absolute; right: 30%; top: 50%; transform: translateY(-50%);">&#8883;</button>
                 </div>
                 <div>
@@ -38,7 +38,6 @@
                 <div id="popup" class="popup">
                     <div class="popup-content">
                         <span id="closePopup" class="close">&times;</span>
-                        <h2>Giorno: GG/MM</h2>
                         <img src="./img/pf1.jpeg" alt="Persona" style="width: 50px; height: 50px; border-radius: 50%;">
                         <h3 id="popup-name">Cognome Nome</h3>
                         <h3>Contatto: +39 1234567890</h3>
@@ -59,8 +58,11 @@
                 <div id="user-popup" class="popup">
                     <div class="popup-content">
                         <span id="closeUserPopup" class="close">&times;</span>
+                        <img src="./img/pf1.jpeg" alt="Persona" style="width: 50px; height: 50px; border-radius: 50%;">
                         <h2 id="user-popup-name">Cognome Nome</h2>
                         <h3 id="user-popup-email">email: example@unipol.it</h3>
+                        <h3 id="user-popup-email">+39 1234567890</h3>
+
                     </div>
                 </div>
             </tbody>
@@ -149,7 +151,7 @@
                                 UFFICI
                             </div>
                             <div class="right">
-                                {UFFICIO SELEZIONATO}
+                                <span id="selected-office">seleziona un ufficio</span>
                             </div>
                         </div>
                 
