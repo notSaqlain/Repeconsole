@@ -268,12 +268,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectedOfficeElement = document.getElementById('selected-office');
     officeItems.forEach(item => {
         item.addEventListener('click', function() {
-            // Remove the 'active' class from all buttons
             officeItems.forEach(office => office.classList.remove('active'));
-            // Add the 'active' class to the clicked button
             this.classList.add('active');
             selectedOfficeElement.textContent = this.textContent;
         });
     });
-
 });
