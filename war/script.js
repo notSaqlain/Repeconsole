@@ -256,9 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
       addUserButton.style.display = "none";
       removeUserButton.style.display = "flex";
       document.getElementById("popup-name").innerText = `${eventDetail}`;
-      document.getElementById("popup-contact").innerText = `Contatto: ${eventDetail.toLowerCase().replace(' ', '.')}@unipol.it`;
-      document.getElementById("popup-numero").innerText = `Telefono: +39 1234567890`;
-
+      document.getElementById("popup-contact").innerText = `Contatto: +39 0000000000`;
     } else {
       // No user selected
       userSelectContainer.style.display = "block";
@@ -266,7 +264,6 @@ document.addEventListener("DOMContentLoaded", function () {
       removeUserButton.style.display = "none";
       document.getElementById("popup-name").innerText = `Giorno ${day}`;
       document.getElementById("popup-contact").innerText = "";
-      document.getElementById("popup-numero").innerText = "";
     }
 
     popup.style.display = "flex";
@@ -403,21 +400,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
-
-
-  /*
-  // Aggiungi utente: resetta la select
-  const one = document.getElementById('user-select');
-  const two = document.getElementById('closePopup');
-  const three = document.querySelector('.add-user');
-
-  function resetUserSelect() {
-    one.value = '';
-  }
-
-  two.addEventListener('click', resetUserSelect);
-  three.addEventListener('click', resetUserSelect);
-
-  */  
-
 });
