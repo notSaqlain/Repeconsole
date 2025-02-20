@@ -374,13 +374,13 @@ footer > div {
 .tooltip-content {
     position: absolute;
     opacity: 0;
-    transform: translateY(-150%);
+ /*   transform: translateY(-150%); */
     transition: opacity 0.5s, transform 0.5s;
 }
 
 .tooltip-container:hover .tooltip-content {
     opacity: 1;
-    transform: translateY(-200%);
+  /*  transform: translateY(-200%);*/
 }
 
 .button-container {
@@ -500,4 +500,3 @@ html::-webkit-scrollbar-thumb {
         grid-template-columns: 1fr;
     }
 }
-

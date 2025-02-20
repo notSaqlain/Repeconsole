@@ -125,13 +125,15 @@ document.addEventListener("DOMContentLoaded", function () {
             eventDiv.style.position = "relative";
             eventDiv.style.boxSizing = "border-box";
 
+
+            // Immagine utente (0px x 0px)
             let img = document.createElement("img");
             img.src = "img/pf2.jpg";
             img.alt = "Persona 2";
-            img.style.width = "20px";
-            img.style.height = "20px";
+            img.style.width = "0px";
+            img.style.height = "0px";
             img.style.borderRadius = "50%";
-            img.style.marginRight = "5px";
+            img.style.marginRight = "0px";
 
             let textContainer = document.createElement("div");
             textContainer.style.overflow = "hidden";
@@ -178,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
           cell.addEventListener("mousemove", (e) => {
             tooltip.style.left = e.pageX + 10 + "px";
             tooltip.style.top = e.pageY - 30 + "px";
-          });
+         });
 
           cell.addEventListener("mouseleave", () => {
             tooltip.style.opacity = "0";
