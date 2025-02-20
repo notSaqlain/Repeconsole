@@ -162,7 +162,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             textContainer.appendChild(innerTextDiv);
-            eventDiv.appendChild(img);
+            // eventDiv.appendChild(img); // Non usato pk aggiunge l'immagine utente al div
+            eventDiv.appendChild(textContainer); // Appenda il div con il testo all'evento
             cell.appendChild(eventDiv);
           }
 
@@ -171,7 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
             let day = dayDiv.innerText;
             let eventText = eventsMap[day] ? eventsMap[day].personName : "Nessun evento";
             // Usiamo i backtick
-            tooltip.innerText = `Giorno ${day} ${monthNames[month]}\n${eventText}`;
+            tooltip.style.color = "transparent";
+            //tooltip.innerText = `Giorno ${day} ${monthNames[month]}\n${eventText}`;  // non si vede
             tooltip.style.opacity = "1";
             tooltip.style.left = e.pageX + 10 + "px";
             tooltip.style.top = e.pageY - 30 + "px";
@@ -253,8 +255,10 @@ document.addEventListener("DOMContentLoaded", function () {
       userSelectContainer.style.display = "none";
       addUserButton.style.display = "none";
       removeUserButton.style.display = "flex";
-      document.getElementById("popup-name").innerText = `Dettaglio Evento: ${eventDetail}`;
+      document.getElementById("popup-name").innerText = `${eventDetail}`;
       document.getElementById("popup-contact").innerText = `Contatto: ${eventDetail.toLowerCase().replace(' ', '.')}@unipol.it`;
+      document.getElementById("popup-numero").innerText = `Telefono: +39 1234567890`;
+
     } else {
       // No user selected
       userSelectContainer.style.display = "block";
@@ -262,6 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
       removeUserButton.style.display = "none";
       document.getElementById("popup-name").innerText = `Giorno ${day}`;
       document.getElementById("popup-contact").innerText = "";
+      document.getElementById("popup-numero").innerText = "";
     }
 
     popup.style.display = "flex";
@@ -399,6 +404,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+
+  /*
   // Aggiungi utente: resetta la select
   const one = document.getElementById('user-select');
   const two = document.getElementById('closePopup');
@@ -410,4 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   two.addEventListener('click', resetUserSelect);
   three.addEventListener('click', resetUserSelect);
+
+  */  
+
 });
