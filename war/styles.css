@@ -1,0 +1,503 @@
+/* Reset di box-sizing */
+* {
+    box-sizing: border-box;
+}
+
+/* Stile di base */
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+/* HEADER PRINCIPALE */
+.header-container {
+    width: 97%;
+    margin: 0 auto;
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative; /* per i pulsanti prev/next */
+}
+
+.header-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.nav-btn {
+    font-size: 20px;
+    flex-grow: 0;
+}
+
+.header-logo {
+    height: 55px;
+}
+
+/* CONTENITORE GENERALE DEL CALENDARIO */
+.calendar-container {
+    max-width: 85%;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; 
+}
+
+/* TABELLA CALENDARIO */
+.calendar {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 2px;
+    margin-top: 20px;
+    border-radius: 15px;
+    table-layout: fixed;
+    overflow: hidden;
+}
+
+.calendar thead th,
+.calendar td {
+    border-radius: 15px;
+    border: 1px solid #dadada;
+    text-align: center;
+    vertical-align: top;
+    position: relative;
+    padding: 20px;
+}
+
+.calendar thead th {
+    background-color: #002F5F;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    width: 14.28%;
+}
+
+.cell:hover {
+    border-color: #c8cfd5;
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.calendar-day {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    padding-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Giorno di oggi evidenziato */
+td.today-cell {
+    border-style: solid;
+    border-color: #002F5F;
+    border-width: 3px;
+    border-radius: 12px;
+    background-color: #e4ecff;
+}
+
+/* EVENTI */
+.event {
+    text-align: center;
+    position: relative;
+    margin-bottom: 5px;
+    padding: 6px 12px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #000;
+}
+
+/* Colori predefiniti */
+.blue {
+    background-color: #3498db;
+    color: black;
+}
+.green {
+    background-color: #2ecc71;
+    color: black;
+}
+.red {
+    background-color: #e74c3c;
+    color: black;
+}
+.yellow {
+    background-color: #f1c40f;
+    color: black;
+}
+
+/* BOTTONI PREV/NEXT */
+.btn {
+    background-color: #002F5F;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.btn:hover {
+    background-color: #0070da;
+}
+
+/* POPUP */
+.popup {
+    display: none; 
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5%;
+    width: 300px;
+    text-align: center;
+    position: relative;
+    z-index: 1001;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.close:hover {
+    color: red;
+}
+
+/* TENDINA SELECT (persona) */
+.select-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.user-select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 60%;
+    max-width: 200px;
+    text-align: center;
+}
+
+/* FOOTER (LISTE UTENTI / UFFICI) */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+footer > div {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+/* SEZIONE SINISTRA (personale) */
+.left-section {
+    flex: 0.4;
+}
+
+.user-list-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border: 2px solid #ddd;
+}
+
+.user-list {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.user-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.user-container:hover {
+    cursor: pointer;
+    border-color: black !important;
+}
+
+.profile-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.text-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    flex-grow: 1;
+    min-width: 50px;
+}
+
+.text-wrapper {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 40px;
+    transform: translateX(0);
+    transition: transform 0.5s ease-out;
+}
+
+.user-container:hover .text-wrapper {
+    animation: scrollText 5s linear infinite;
+}
+.user-container:not(:hover) .text-wrapper {
+    animation: none;
+    transform: translateX(0);
+}
+
+@keyframes scrollText {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* SEZIONE DESTRA (uffici) */
+.right-section {
+    flex: 0.6;
+}
+
+.office-list-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border: 2px solid #ddd;
+}
+
+.office-list {
+    max-height: 200px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+}
+
+.office-item {
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
+
+.office-item:hover {
+    background-color: #e6e6e6;
+    cursor: pointer;
+}
+
+.office-item.active {
+    background-color: #002F5F;
+    color: #fff;
+}
+
+/* BARRA IN ALTO (Personale / UFFICI) */
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.left, .right {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* BOTTONI Aggiungi/Rimuovi Utente */
+.tooltip-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tooltip-content {
+    position: absolute;
+    opacity: 0;
+    transform: translateY(-150%);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.tooltip-container:hover .tooltip-content {
+    opacity: 1;
+    transform: translateY(-200%);
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 5px;
+}
+
+.button-container:hover {
+    gap: 10px;
+}
+
+.button-text {
+    font-size: 0px;
+    transition: font-size 0.3s;
+}
+
+.button-container:hover .button-text {
+    font-size: 14px;
+}
+
+html::-webkit-scrollbar {
+    width: 12px;
+}
+
+html::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+html::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #90969c;
+}
+
+.scrollbar::-webkit-scrollbar {
+    gap: 100px;
+    width: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #90969c;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+    .header-container,
+    .calendar-container,
+    footer > div {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .header-title-container {
+        justify-content: center;
+    }
+
+    .nav-btn {
+        margin: 10px;
+    }
+
+    .calendar th,
+    .calendar td {
+        padding: 10px;
+    }
+
+    .left-section,
+    .right-section {
+        flex: 1;
+        width: 100%;
+    }
+
+    .office-list {
+        grid-template-columns: repeat(1, auto);
+    }
+
+    .popup-content {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header-title {
+        font-size: 30px;
+    }
+
+    .calendar th,
+    .calendar td {
+        padding: 5px;
+    }
+
+    .btn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .popup-content {
+        width: 95%;
+    }
+
+    .office-list {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -1,0 +1,218 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestione Reperibilità</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="calendar-container">
+    <header class="header-container">
+      <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div style="font-size: 220%; font-weight: bold;" id="year"></div>
+        <div class="header-title-container" style="position: relative; flex-grow: 1; display: flex; justify-content: center; align-items: center;">
+          <button class="nav-btn btn btn-prev" style="position: absolute; left: 30%; top: 50%; transform: translateY(-50%);">&#8882;</button>
+          <h1 id="month-year" class="header-title"></h1>
+          <button class="nav-btn btn btn-next" style="position: absolute; right: 30%; top: 50%; transform: translateY(-50%);">&#8883;</button>
+        </div>
+        <div>
+          <img src="img/Unipol_Gruppo_Logo.svg" class="header-logo" alt="UNIPOL">
+        </div>
+      </div>
+    </header>
+
+    <!-- TABELLA CALENDARIO -->
+    <table class="calendar">
+      <thead>
+        <tr>
+          <th>Lun</th>
+          <th>Mar</th>
+          <th>Mer</th>
+          <th>Gio</th>
+          <th>Ven</th>
+          <th>Sab</th>
+          <th>Dom</th>
+        </tr>
+      </thead>
+      <tbody id="calendar-body">
+        <!-- Riempito dinamicamente da script.js -->
+      </tbody>
+    </table>
+    
+    <!-- POPUP per Aggiungi/Rimuovi Utente -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <span id="closePopup" class="close">&times;</span>
+        <img src="img/Default_pfp.svg" alt="Persona" style="width: 50px; height: 50px; border-radius: 50%;">
+        <h3 id="popup-name">Dettaglio Evento</h3>
+        <h3 id="popup-contact"></h3>
+
+        <!-- Selettore persona -->
+        <div class="select-container">
+          <label for="user-select" style="font-weight: bold; margin-bottom: 5px;">Seleziona Persona:</label>
+          <select id="user-select" class="user-select">
+            <option value="">-- Seleziona --</option>
+            <option value="Saqlain Khalid">Saqlain Khalid</option>
+            <option value="Merkaj Kevin">Kevin Merkaj</option>
+            <option value="Damiano Borrelli">Damiano Borrelli</option>
+            <option value="Matteo Galdini">Matteo Galdini</option>
+          </select>
+        </div>
+
+        <br><br>
+        <div class="tooltip-container">
+          <div class="button-container add-user" style="background: rgb(101, 255, 101);">
+            <img src="img/plus.png" alt="Icona aggiungi" height="20px" width="20px" class="icon">
+            <span class="button-text">Aggiungi Utente</span>
+          </div>
+          <div class="button-container remove-user" style="background: rgb(255, 95, 95);">
+            <img src="img/delete.png" alt="Icona rimuovi" height="20px" width="20px" class="icon">
+            <span class="button-text">Rimuovi Utente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- POPUP per dettagli utente (cliccando nella lista in basso) -->
+    <div id="user-popup" class="popup">
+      <div class="popup-content">
+        <span id="closeUserPopup" class="close">&times;</span>
+        <img src="img/pf1.jpeg" alt="Persona" style="width: 50px; height: 50px; border-radius: 50%;">
+        <h2 id="user-popup-name">Cognome Nome</h2>
+        <h3 id="user-popup-email">email: example@unipol.it</h3>
+        <h3 id="user-popup-phone">+39 1234567890</h3>
+      </div>
+    </div>
+    
+    <footer style="display: flex; justify-content: center; align-items: center; padding: 15px; border-radius: 8px; width: 100%;">
+      <div style="display: flex; width: 100%; gap: 10px;">
+        <!-- Left Section: Users -->
+        <div class="left-section">
+          <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd; height: 200px; display: flex; flex-direction: column;">
+              
+              <!-- Fixed Title -->
+              <div class="container">
+                  <div class="left">
+                      Personale
+                  </div>
+                  <div class="right">
+                      <%= request.getRemoteUser() %>
+                  </div>
+              </div>
+      
+              <!-- Scrollable User List -->
+              <div class = "scrollbar" style="overflow-y: auto; flex-grow: 1;">
+                  <div style="display: grid; grid-template-columns: repeat(2, auto); gap: 10px;">
+                      <!-- Users Here -->
+                      <div class="user-container" style="background: #f1c40f;" data-user="Saqlain Khalid">
+                          <img src="./img/pf2.jpg" alt="Persona 1" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Saqlain Khalid • Saqlain Khalid •</span>
+                          </div>
+                      </div>
+                      <div class="user-container" style="background: #e74c3c; " data-user="Merkaj Kevin">
+                          <img src="./img/pf1.jpeg" alt="Persona 2" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Kevin Merkaj • Kevin Merkaj •</span>
+                          </div>
+                      </div>
+                      <div class="user-container" style="background: #2ecc71;" data-user="Damiano Borrelli">
+                          <img src="./img/pf3.jpeg" alt="Persona 3" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Damiano Borrelli • Damiano Borrelli •</span>
+                          </div>
+                      </div>
+                      <div class="user-container" style="background: #3498db;" data-user="Matteo Galdini">
+                          <img src="./img/pf4.jpg" alt="Persona 4" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Matteo Galdini • Matteo Galdini •</span>
+                          </div>
+                      </div>
+                      <div class="user-container" style="background: #99ffeb;" data-user="Butt Abdul Mohid">
+                          <img src="./img/pf1.jpeg" alt="Persona 5" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Butt Abdul Mohid • Butt Abdul Mohid •</span>
+                          </div>
+                      </div>
+                      <div class="user-container" style="background: #f599ff;" data-user="Gambetti Valerio">
+                          <img src="./img/pf1.jpeg" alt="Persona 6" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Valerio Gambetti • Valerio Gambetti •</span>
+                          </div>
+                      </div>
+                      <div class="user-container" style="background: #b999ff;" data-user="Giorgio Controne">
+                          <img src="./img/pf1.jpeg" alt="Persona 7" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Giorgio Controne • Giorgio Controne •</span>
+                          </div>
+                      </div>
+                      <div class="user-container" style="background: #17bdbd;" data-user="Butt Gandu">
+                          <img src="./img/pf1.jpeg" alt="Persona 8" class="profile-img">
+                          <div class="text-container">
+                              <span class="text-wrapper">Butt Gandu • Butt Penchod •</span>
+                          </div>
+                      </div>
+                      <!-- END -->
+                  </div>
+              </div>
+          </div>
+      </div>  
+        <!-- Sezione destra: Uffici -->
+        <div class="right-section">
+          <div style="background: white; padding: 20px; border-radius: 15px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ddd; height: 200px; display: flex; flex-direction: column;">
+              
+              <!-- Fixed Title -->
+              <div class="container">
+                  <div class="left">
+                      UFFICI
+                  </div>
+                  <div class="right">
+                      <span id="selected-office">seleziona un ufficio</span>
+                  </div>
+              </div>
+      
+              <!-- Scrollable Office List -->
+              <div class = "scrollbar" style="overflow-y: auto; flex-grow: 1;">
+                  <div class="btn2" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                      <button class="office-item">Architettura società H24</button>
+                      <button class="office-item">Application Management</button>
+                      <button class="office-item">Assistenza PdI Agenzie</button>
+                      <button class="office-item">Assistenza PdI Sedi</button>
+                      <button class="office-item">Assistenza Telefonia Mobile</button>
+                      <button class="office-item">DBA Mainframe</button>
+                      <button class="office-item">DBA Open</button>
+                      <button class="office-item">Flussi Dati</button>
+                      <button class="office-item">Gestione Reti</button>
+                      <button class="office-item">Gestione Sicurezza</button>
+                      <button class="office-item">Gestione Sicurezza Rete</button>
+                      <button class="office-item">Gestione Sistemi Windows</button>
+                      <button class="office-item">Gestione Utenze</button>
+                      <button class="office-item">Infrastruttura Windows</button>
+                      <button class="office-item">Posta Elettronica</button>
+                      <button class="office-item">Prodotti Host</button>
+                      <button class="office-item">Produzione Unix</button>
+                      <button class="office-item">Produzione Windows</button>
+                      <button class="office-item">Progettazione Client di Sede</button>
+                      <button class="office-item">Rilasci ISPW</button>
+                      <button class="office-item">Schedulazione Host</button>
+                      <button class="office-item">Schedulazione Open</button>
+                      <button class="office-item">Sistemi UNIX</button>
+                      <button class="office-item">Sistemisti Host</button>
+                      <button class="office-item">WebSphere Host</button>
+                      <button class="office-item">Monitoraggio Consumi Host</button>
+                      <button class="office-item">SuperVisor</button>
+                      <button class="office-item">Monitoraggio 24X7</button>
+                  </div>
+              </div>
+          </div>
+      </div>                
+  </div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
