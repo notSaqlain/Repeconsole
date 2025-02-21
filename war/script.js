@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.style.display = "none";
     currentEventDate = null;
     currentEventPersonName = null;
-    // resetUserSelect();
+    // resetUserSelect(); // Aggiungi utente: resetta la select (non usato) riga: 417-427
   }
 
   if (closePopup) {
