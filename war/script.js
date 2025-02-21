@@ -255,8 +255,9 @@ document.addEventListener("DOMContentLoaded", function () {
       userSelectContainer.style.display = "none";
       addUserButton.style.display = "none";
       removeUserButton.style.display = "flex";
-      document.getElementById("popup-name").innerText = `${eventDetail}`;
-      document.getElementById("popup-contact").innerText = `Contatto: +39 0000000000`;
+      document.getElementById("popup-name").innerText = `Dettaglio Evento: ${eventDetail}`;
+      document.getElementById("popup-contact").innerText = `Contatto: ${eventDetail.toLowerCase().replace(' ', '.')}@unipol.it`;
+      document.getElementById("popup-numero").innerText = `+39 000 000 0000`;
     } else {
       // No user selected
       userSelectContainer.style.display = "block";
@@ -264,6 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
       removeUserButton.style.display = "none";
       document.getElementById("popup-name").innerText = `Giorno ${day}`;
       document.getElementById("popup-contact").innerText = "";
+      document.getElementById("popup-numero").innerText = "";
     }
 
     popup.style.display = "flex";
@@ -273,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     popup.style.display = "none";
     currentEventDate = null;
     currentEventPersonName = null;
-    resetUserSelect();
+    // resetUserSelect();
   }
 
   if (closePopup) {
@@ -349,7 +351,12 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         body: new URLSearchParams(eventData)
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Errore durante l'aggiunta dell'evento.");
+        }
+        return response.json();
+      })
       .then(data => {
         console.log("Successo:", data);
         alert("Evento aggiunto con successo!");
@@ -383,7 +390,12 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         body: new URLSearchParams(eventData)
       })
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Errore durante la rimozione dell'evento.");
+        }
+        return response.json();
+      })
       .then(data => {
         console.log("Successo:", data);
         if (data.status === "success") {
@@ -400,4 +412,18 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   }
+
+  /*
+  // Aggiungi utente: resetta la select
+  const one = document.getElementById('user-select');
+  const two = document.getElementById('closePopup');
+  const three = document.querySelector('.add-user');
+
+  function resetUserSelect() {
+    one.value = '';
+  }
+
+  two.addEventListener('click', resetUserSelect);
+  three.addEventListener('click', resetUserSelect);
+  */
 });
